@@ -7,7 +7,7 @@ const LandingLayout = ({children}: { children: React.ReactNode; }) => {
         <div className="h-dvh bg-pink-50">
             <Navbar></Navbar>
             <main className="h-full bg-pink-50">
-            {children}
+                {children}
             </main>
             <Footer></Footer>
         </div>
