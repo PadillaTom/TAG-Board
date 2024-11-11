@@ -2,9 +2,9 @@ import React from "react";
 
 const LandingLayout = ({children}: { children: React.ReactNode; }) => {
     return (
-        <div className="h-dvh bg-slate-100">
+        <div className="h-dvh bg-pink-50">
             {/* Navbar */}
-            <main className="h-full bg-slate-100">
+            <main className="h-full bg-pink-50">
             {children}
             </main>
             {/* Footer */}

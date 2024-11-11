@@ -1,11 +1,20 @@
-import {ChartSpline} from "lucide-react";
+import bullseye from "../../public/images/bullseye.png"
+import Image from "next/image";
 
-const LandingPage = ()=> {
+const LandingPage = () => {
     return (
         <div className="h-full flex items-center justify-around flex-col">
-            <div className="flex items-center justify-around flex-col" >
-                <div className="flex items-center border shadow-sm py-4 px-8 bg-amber-100 text-amber-700 rounded-full">
-                    <ChartSpline className="h-6 w-6 mr-2"></ChartSpline>
+            <div className="flex items-center justify-around flex-col">
+                <div
+                    className="
+                    flex items-center border-0
+                    shadow-lg
+                    rounded-full
+                    py-3 px-5
+                    bg-white
+                    text-amber-700 text-lg tracking-wide font-extralight
+                    ">
+                    <Image src={bullseye} alt="TAG Board" className="mb-0.5 mr-4 max-w-8 object-cover"></Image>
                     TAG Board
                 </div>
             </div>
