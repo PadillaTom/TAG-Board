@@ -1,21 +1,17 @@
 import type {Metadata} from "next";
-import localFont from "next/font/local";
 import "./globals.css";
-
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+import {siteConfig} from "@/config/site";
 
 export const metadata: Metadata = {
-  title: "TAG Board",
-  description: "¡Optimiza tu productividad y alcanza tus metas con TAG Board!",
+  title: {
+    default: siteConfig.title,
+    template: `%s | ${siteConfig.title}`,
+  },
+  description: siteConfig.description,
+  icons: [{
+    url: "/favicon.ico",
+    href: "/favicon.ico"
+  }]
 };
 
 export default function RootLayout({
@@ -25,9 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+    <body>
         {children}
       </body>
     </html>
