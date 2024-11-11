@@ -1,7 +1,11 @@
 # Tag-Board
 
 ### Dependencies:
-Next JS
-React JS
+
+Next Js
+React Js
+
 Tailwind CSS
-Shadcn UI
+Shadcn
+
+Deployment in Netlify
