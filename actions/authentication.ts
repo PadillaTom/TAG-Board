@@ -1,47 +1,48 @@
 "use server";
 
 import { cookies } from "next/headers";
+import { JWT_COOKIE_NAME } from "@/constants/appConstants";
+import { LOGIN_URL, REGISTER_URL } from "@/constants/apiUrls";
+import { LoginRequest, RegisterRequest, AuthenticationResponse, ExceptionResponse } from "@/types/authTypes";
 
-const BASE_URL = "http://localhost:8080";
-const LOGIN_URL = "/api/v1/auth/login";
-const REGISTER_URL = "/api/v1/auth/register";
-
-export const login = async (values: { username: string; password: string }) => {
-	const response = await fetch(BASE_URL + LOGIN_URL, {
+export const login = async (values: LoginRequest) => {
+	const response = await fetch(LOGIN_URL, {
 		method: "POST",
 		headers: { "Content-Type": "application/json" },
-		body: JSON.stringify({ username: values.username, password: values.password }),
+		body: JSON.stringify(values),
 	});
-
-	const cookieStore = await cookies();
-	const data = await response.json();
 
 	if (response.status === 401) {
 		return { error: "Usuario o contraseña incorrectos." };
 	}
 
 	if (response.status === 202) {
-		const token = data.jwt;
-		cookieStore.set("jwt", token, { httpOnly: true });
+		const cookieStore = await cookies();
+		const data: AuthenticationResponse = await response.json();
+		cookieStore.set(JWT_COOKIE_NAME, data.jwt, { httpOnly: true });
 	}
 };
 
-export const register = async (values: { username: string; password: string }) => {
-	const response = await fetch(BASE_URL + REGISTER_URL, {
+export const register = async (values: RegisterRequest) => {
+	const response = await fetch(REGISTER_URL, {
 		method: "POST",
 		headers: { "Content-Type": "application/json" },
-		body: JSON.stringify({ username: values.username, password: values.password, roleId: 2 }),
+		body: JSON.stringify(values),
 	});
 
-	const cookieStore = await cookies();
-	const data = await response.json();
-
-	if (response.status === 400) {
+	if (response.status === 401) {
+		const data: ExceptionResponse = await response.json();
 		return { error: data.message };
 	}
 
 	if (response.status === 201) {
-		const token = data.jwt;
-		cookieStore.set("jwt", token, { httpOnly: true });
+		const cookieStore = await cookies();
+		const data: AuthenticationResponse = await response.json();
+		cookieStore.set(JWT_COOKIE_NAME, data.jwt, { httpOnly: true });
 	}
+};
+
+export const logout = async () => {
+	const cookieStore = await cookies();
+	cookieStore.delete(JWT_COOKIE_NAME);
 };
