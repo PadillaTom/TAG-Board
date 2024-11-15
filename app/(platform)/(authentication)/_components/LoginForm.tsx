@@ -24,6 +24,8 @@ const LoginForm = () => {
 		startTransition(async () => {
 			const result = await login(values);
 			if (result && result.error) {
+				console.log("loginForm");
+				console.log(result.error);
 				form.setError("root", {
 					type: "manual",
 					message: result.error,
