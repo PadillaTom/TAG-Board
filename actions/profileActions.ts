@@ -6,7 +6,7 @@ import { authFetch } from "@/lib/interceptor";
 
 export async function fetchProfile() {
 	try {
-		const response = await authFetch(GET_PROFILE + "/1", {
+		const response = await authFetch(GET_PROFILE, {
 			method: "GET",
 			headers: {
 				"Content-Type": "application/json",

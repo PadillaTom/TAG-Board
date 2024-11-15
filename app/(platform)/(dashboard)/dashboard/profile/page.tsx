@@ -11,7 +11,10 @@ const ProfilePage = async () => {
 			<div className=" flex flex-col justify-center items-center">
 				<span className="">Nombre: {profileData.name}</span>
 				<span className="">Apellido: {profileData.lastName}</span>
-				<Image className="" src={profileData.imageUrl} width={300} height={700} alt="Profile"></Image>
+				<span className="">Username: {profileData.email}</span>
+				{profileData.imageUrl !== null && (
+					<Image src={profileData.imageUrl} width={500} height={500} alt="Profile"></Image>
+				)}
 			</div>
 			<Link href="/dashboard" className="mt-8 underline">
 				Inicio
