@@ -3,9 +3,9 @@ import { Navbar } from "./_components/Navbar";
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
 	return (
-		<div className="h-dvh">
+		<div className="h-dvh bg-pink-50">
 			<Navbar></Navbar>
-			{children}
+			<main className="h-full bg-pink-50 pt-14">{children}</main>
 		</div>
 	);
 };

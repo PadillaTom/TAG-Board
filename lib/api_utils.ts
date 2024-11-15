@@ -1,4 +1,3 @@
-
 export const handleErrors = (error, message: string) => {
 	if (error.code === "ECONNREFUSED") {
 		console.log("Backend server is unreachable. Check your backend service.");
