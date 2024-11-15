@@ -1,3 +1,5 @@
+"use server";
+
 export const handleErrors = (error: Error) => {
 	console.log("handleErrors");
 	console.log(error);
