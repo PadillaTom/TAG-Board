@@ -4,7 +4,7 @@ import { cookies } from "next/headers";
 import { JWT_COOKIE_NAME } from "@/constants/appConstants";
 import { LOGIN_URL, REGISTER_URL } from "@/constants/apiUrls";
 import { LoginRequest, RegisterRequest, AuthenticationResponse, ExceptionResponse } from "@/types/authTypes";
-import { CustomError, handleErrors } from "@/lib/api_utils";
+import { handleErrors } from "@/lib/api_utils";
 
 export const login = async (values: LoginRequest) => {
 	try {
