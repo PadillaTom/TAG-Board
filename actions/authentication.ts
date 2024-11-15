@@ -4,7 +4,7 @@ import { cookies } from "next/headers";
 import { JWT_COOKIE_NAME } from "@/constants/appConstants";
 import { LOGIN_URL, REGISTER_URL } from "@/constants/apiUrls";
 import { LoginRequest, RegisterRequest, AuthenticationResponse, ExceptionResponse } from "@/types/authTypes";
-import { handleErrors } from "@/lib/api_utils";
+import { CustomError, handleErrors } from "@/lib/api_utils";
 
 export const login = async (values: LoginRequest) => {
 	try {
@@ -24,7 +24,7 @@ export const login = async (values: LoginRequest) => {
 			cookieStore.set(JWT_COOKIE_NAME, data.jwt, { httpOnly: true });
 		}
 	} catch (error) {
-		return handleErrors(error, "Error al iniciar sesion. Vuelva a intentarlo mas tarde.");
+		return handleErrors(error as Error);
 	}
 };
 
@@ -47,7 +47,7 @@ export const register = async (values: RegisterRequest) => {
 			cookieStore.set(JWT_COOKIE_NAME, data.jwt, { httpOnly: true });
 		}
 	} catch (error) {
-		return handleErrors(error, "Error al crear cuenta. Vuelva a intentarlo mas tarde.");
+		return handleErrors(error as Error);
 	}
 };
 

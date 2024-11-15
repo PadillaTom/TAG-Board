@@ -14,6 +14,6 @@ export async function fetchProfile() {
 		});
 		return await response.json();
 	} catch (error) {
-		return handleErrors(error, "Error");
+		return handleErrors(error as Error);
 	}
 }
