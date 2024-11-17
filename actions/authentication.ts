@@ -15,6 +15,11 @@ export const login = async (values: LoginRequest) => {
 		});
 
 		console.log(response);
+
+		if (response.status === 404) {
+			return { error: "Ocurrio un error, intente mas tarde." };
+		}
+
 		if (response.status === 401) {
 			return { error: "Usuario o contraseña incorrectos." };
 		}

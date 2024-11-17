@@ -20,12 +20,10 @@ const LoginForm = () => {
 		defaultValues: { username: "", password: "" },
 	});
 
-	const onSubmit = async (values: z.infer<typeof loginSchema>) => {
+	const onSubmit = (values: z.infer<typeof loginSchema>) => {
 		startTransition(async () => {
 			const result = await login(values);
 			if (result && result.error) {
-				console.log("loginForm");
-				console.log(result.error);
 				form.setError("root", {
 					type: "manual",
 					message: result.error,
