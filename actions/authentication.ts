@@ -7,30 +7,24 @@ import { LoginRequest, RegisterRequest, AuthenticationResponse, ExceptionRespons
 import { handleErrors } from "@/lib/api_utils";
 
 export const login = async (values: LoginRequest) => {
-	try {
-		const response = await fetch(LOGIN_URL, {
-			method: "POST",
-			headers: { "Content-Type": "application/json" },
-			body: JSON.stringify(values),
-		});
+	const response = await fetch(LOGIN_URL, {
+		method: "POST",
+		headers: { "Content-Type": "application/json" },
+		body: JSON.stringify(values),
+	});
 
-		console.log(response);
+	if (response.status === 404) {
+		return { error: "Ocurrio un error, intente mas tarde." };
+	}
 
-		if (response.status === 404) {
-			return { error: "Ocurrio un error, intente mas tarde." };
-		}
+	if (response.status === 401) {
+		return { error: "Usuario o contraseña incorrectos." };
+	}
 
-		if (response.status === 401) {
-			return { error: "Usuario o contraseña incorrectos." };
-		}
-
-		if (response.status === 202) {
-			const cookieStore = await cookies();
-			const data: AuthenticationResponse = await response.json();
-			cookieStore.set(JWT_COOKIE_NAME, data.jwt, { httpOnly: true });
-		}
-	} catch (error) {
-		return handleErrors(error as Error);
+	if (response.status === 202) {
+		const cookieStore = await cookies();
+		const data: AuthenticationResponse = await response.json();
+		cookieStore.set(JWT_COOKIE_NAME, data.jwt, { httpOnly: true });
 	}
 };
 
