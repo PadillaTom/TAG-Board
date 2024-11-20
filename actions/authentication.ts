@@ -11,10 +11,12 @@ export const login = async (values: LoginRequest) => {
 		headers: { "Content-Type": "application/json" },
 		body: JSON.stringify(values),
 	});
+
 	if (response.status == 401) {
 		const data = (await response.json()) as ExceptionResponse;
 		return data;
 	}
+
 	if (response.status === 202) {
 		const cookieStore = await cookies();
 		const data = (await response.json()) as AuthenticationResponse;
@@ -29,13 +31,9 @@ export const register = async (values: RegisterRequest) => {
 		body: JSON.stringify(values),
 	});
 
-	if (response.status === 404) {
-		return { error: "Ocurrio un error, intente mas tarde." };
-	}
-
-	if (response.status === 401) {
-		const data: ExceptionResponse = await response.json();
-		return { error: data.message };
+	if (response.status == 401) {
+		const data = (await response.json()) as ExceptionResponse;
+		return data;
 	}
 
 	if (response.status === 201) {
