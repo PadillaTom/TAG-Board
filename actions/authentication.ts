@@ -23,6 +23,7 @@ export const login = async (values: LoginRequest) => {
 		}
 	} catch (error: any) {
 		// Pass the error to the closest error boundary
+		console.log(error);
 		throw new Error(error.message);
 	}
 	
