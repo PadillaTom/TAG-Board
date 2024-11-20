@@ -11,18 +11,13 @@ export const login = async (values: LoginRequest) => {
 		headers: { "Content-Type": "application/json" },
 		body: JSON.stringify(values),
 	});
-
-	if (response.status === 404) {
-		return { error: "Ocurrio un error, intente mas tarde." };
+	if (response.status == 401) {
+		const data = (await response.json()) as ExceptionResponse;
+		return data;
 	}
-
-	if (response.status === 401) {
-		return { error: "Usuario o contraseña incorrectos." };
-	}
-
 	if (response.status === 202) {
 		const cookieStore = await cookies();
-		const data: AuthenticationResponse = await response.json();
+		const data = (await response.json()) as AuthenticationResponse;
 		cookieStore.set(JWT_COOKIE_NAME, data.jwt, { httpOnly: true });
 	}
 };

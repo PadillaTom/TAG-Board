@@ -23,10 +23,10 @@ const LoginForm = () => {
 	const onSubmit = (values: z.infer<typeof loginSchema>) => {
 		startTransition(async () => {
 			const result = await login(values);
-			if (result && result.error) {
+			if (result && result.httpStatus) {
 				form.setError("root", {
 					type: "manual",
-					message: result.error,
+					message: result.message,
 				});
 			} else {
 				router.push("/dashboard");
