@@ -6,27 +6,20 @@ import { LOGIN_URL, REGISTER_URL } from "@/constants/apiUrls";
 import { LoginRequest, RegisterRequest, AuthenticationResponse, ExceptionResponse } from "@/types/authTypes";
 
 export const login = async (values: LoginRequest) => {
-	try {
-		const response = await fetch(LOGIN_URL, {
-			method: "POST",
-			headers: { "Content-Type": "application/json" },
-			body: JSON.stringify(values),
-		});
-		if (response.status == 401) {
-			const data = (await response.json()) as ExceptionResponse;
-			return data;
-		}
-		if (response.status === 202) {
-			const cookieStore = await cookies();
-			const data = (await response.json()) as AuthenticationResponse;
-			cookieStore.set(JWT_COOKIE_NAME, data.jwt, { httpOnly: true });
-		}
-	} catch (error: any) {
-		// Pass the error to the closest error boundary
-		console.log(error);
-		throw new Error(error.message);
+	const response = await fetch(LOGIN_URL, {
+		method: "POST",
+		headers: { "Content-Type": "application/json" },
+		body: JSON.stringify(values),
+	});
+	if (response.status == 401) {
+		const data = (await response.json()) as ExceptionResponse;
+		return data;
 	}
-	
+	if (response.status === 202) {
+		const cookieStore = await cookies();
+		const data = (await response.json()) as AuthenticationResponse;
+		cookieStore.set(JWT_COOKIE_NAME, data.jwt, { httpOnly: true });
+	}
 };
 
 export const register = async (values: RegisterRequest) => {
