@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { login } from "@/actions/authentication";
 import { loginSchema } from "@/schemas/authSchema";
 import { useRouter } from "next/navigation";
+import { ROUTES } from "@/constants/appConstants";
 
 const LoginForm = () => {
 	const [isPending, startTransition] = useTransition();
@@ -29,7 +30,7 @@ const LoginForm = () => {
 					message: result.message,
 				});
 			} else {
-				router.push("/dashboard");
+				router.push(ROUTES.dashboard);
 			}
 		});
 	};

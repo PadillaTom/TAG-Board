@@ -8,6 +8,7 @@ import { Separator } from "@/components/ui/separator";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Accordion } from "@/components/ui/accordion";
 import { NavItem } from "./NavItem";
+import { ROUTES } from "@/constants/appConstants";
 
 interface SidebarProps {
 	storageKey?: string;
@@ -35,7 +36,7 @@ export const Sidebar = ({ storageKey = "t-sidebar-state" }: SidebarProps) => {
 			<div className="font-medium text-xs flex items-center mb-1">
 				<span className="pl-4">Workspaces</span>
 				<Button asChild type="button" size="icon" variant="ghost" className="ml-auto">
-					<Link href="/dashboard/profile">
+					<Link href={ROUTES.profile}>
 						<Plus className="h4 w-4"></Plus>
 					</Link>
 				</Button>

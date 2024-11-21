@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { register } from "@/actions/authentication";
 import { registerSchema } from "@/schemas/authSchema";
 import { useRouter } from "next/navigation";
+import { ROUTES } from "@/constants/appConstants";
 
 const RegisterForm = () => {
 	const [isPending, startTransition] = useTransition();
@@ -34,7 +35,7 @@ const RegisterForm = () => {
 					message: result.message,
 				});
 			} else {
-				router.push("/dashboard");
+				router.push(ROUTES.dashboard);
 			}
 		});
 	};

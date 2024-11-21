@@ -1,5 +1,6 @@
 import { Logo } from "@/components/Logo";
 import { Button } from "@/components/ui/button";
+import { ROUTES } from "@/constants/appConstants";
 import Link from "next/link";
 
 export const Navbar = () => {
@@ -9,10 +10,10 @@ export const Navbar = () => {
 				<Logo></Logo>
 				<div className="space-x-4 md:block md:w-auto flex items-center justify-between w-full">
 					<Button size={"sm"} variant={"link"} asChild>
-						<Link href="/login">Login</Link>
+						<Link href={ROUTES.login}>Login</Link>
 					</Button>
 					<Button size={"sm"} variant={"outline"} asChild>
-						<Link href="/register">Unirse!</Link>
+						<Link href={ROUTES.register}>Unirse!</Link>
 					</Button>
 				</div>
 			</div>

@@ -16,7 +16,7 @@ const LandingPage = () => {
 				<div
 					className={cn(
 						"flex items-center " +
-							"border-0 shadow-lg rounded-full py-3 px-5 " +
+							"border-0 shadow-sm rounded-full py-3 px-5 " +
 							"bg-white " +
 							"text-amber-700 text-lg tracking-wide font-extralight",
 						textFont.className
