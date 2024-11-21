@@ -17,8 +17,8 @@ const DashboardPage = () => {
 	};
 
 	return (
-		<div className="h-full flex items-center justify-around flex-col">
-			<div className="flex flex-col h-48 justify-between items-center">
+		<div className="h-full flex flex-col justify-around">
+			<div className="flex flex-col h-36 justify-between items-center">
 				<h2 className="text-1xl">Bienvenido</h2>
 				<Button variant="outline" className="text-3xl">
 					<Link href={ROUTES.profile}>Mi Perfil!</Link>
