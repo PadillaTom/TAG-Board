@@ -1,0 +1,13 @@
+:root {
+    --dashboard-bg: rgb(236, 240, 245); 
+    --sidebar-selected: rgb(240, 243, 250);
+    --sidebar-selected-submenu: rgb(92, 98, 255);
+    --navbar-element-hover: rgb(170, 170, 170);
+    --btn-green: rgb(92, 98, 255);
+    --btn-red: rgb(255, 236, 223);
+    --btn-blue: rgb(92, 98, 255);
+}
+
+.my-bg-color {
+    background-color: var(--dashboard-bg);
+}

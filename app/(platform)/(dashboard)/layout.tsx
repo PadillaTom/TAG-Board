@@ -1,7 +1,7 @@
 import React from "react";
 import { Navbar } from "./_components/Navbar";
 
-const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
+const DashboardContentLayout = ({ children }: { children: React.ReactNode }) => {
 	return (
 		<div className="h-dvh bg-pink-50">
 			<Navbar></Navbar>
@@ -10,4 +10,4 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
 	);
 };
 
-export default DashboardLayout;
+export default DashboardContentLayout;
