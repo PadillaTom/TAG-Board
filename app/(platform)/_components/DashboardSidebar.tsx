@@ -1,5 +1,7 @@
 "use client";
 import MySidebarUser from "@/components/MySidebarUser";
+import { SheetTitle } from "@/components/ui/sheet";
+import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import {
 	Sidebar,
 	SidebarContent,
