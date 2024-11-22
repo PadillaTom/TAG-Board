@@ -1,5 +1,5 @@
 import React from "react";
-import "../../paleta.css";
+import "../paleta.css";
 
 import { Navbar } from "./_components/Navbar";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
