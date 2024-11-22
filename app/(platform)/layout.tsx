@@ -14,7 +14,7 @@ const DashboardContentLayout = ({ children }: { children: React.ReactNode }) => 
 				<span className="pt-16 my-bg-color">
 					<SidebarTrigger></SidebarTrigger>
 				</span>
-				<div className="h-dvh pt-28 w-full my-bg-color pr-7">{children}</div>
+				<div className="m-h-dvh pt-28 w-full my-bg-color pr-7 pb-10">{children}</div>
 			</SidebarProvider>
 		</>
 	);
