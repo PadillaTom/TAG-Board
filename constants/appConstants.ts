@@ -1,3 +1,5 @@
+import { Settings, User } from "lucide-react";
+
 export const JWT_COOKIE_NAME = "TAG_Board_JWT";
 
 export const ROUTES = {
@@ -9,12 +11,4 @@ export const ROUTES = {
 	// Platform
 	dashboard: "/dashboard",
 	profile: "/dashboard/profile",
-};
-
-export const SIDEBAR_ELEMENTS = {
-	workspaces: {
-		title: "workspaces",
-		url: "/dashboard/profile",
-		icon: null,
-	},
 };

@@ -1,3 +1,5 @@
+"use client";
+import MySidebarUser from "@/components/MySidebarUser";
 import {
 	Sidebar,
 	SidebarContent,
@@ -5,58 +7,45 @@ import {
 	SidebarGroup,
 	SidebarGroupContent,
 	SidebarGroupLabel,
-	SidebarHeader,
 	SidebarMenu,
 	SidebarMenuButton,
 	SidebarMenuItem,
-	SidebarTrigger,
+	SidebarRail,
+	useSidebar,
 } from "@/components/ui/sidebar";
+import { Home } from "lucide-react";
+import Link from "next/link";
 
 // Menu items.
 const items = [
 	{
-		title: "Home",
-		url: "#",
-		icon: "Home",
-	},
-	{
-		title: "Inbox",
-		url: "#",
-		icon: "Inbox",
-	},
-	{
-		title: "Calendar",
-		url: "#",
-		icon: "Calendar",
-	},
-	{
-		title: "Search",
-		url: "#",
-		icon: "Search",
-	},
-	{
-		title: "Settings",
-		url: "#",
-		icon: "Settings",
+		title: "Inicio",
+		url: "/dashboard",
+		icon: Home,
 	},
 ];
 
 export function DashboardSidebar() {
+	const { setOpenMobile } = useSidebar();
+
+	const handleClick = () => {
+		setOpenMobile(false);
+	};
+
 	return (
-		<Sidebar>
-			<SidebarHeader />
-			<SidebarContent className="py-14 pl-4">
+		<Sidebar className="pt-20 pl-4">
+			<SidebarContent>
 				<SidebarGroup>
 					<SidebarGroupLabel>Tableros</SidebarGroupLabel>
 					<SidebarGroupContent>
 						<SidebarMenu>
 							{items.map((item) => (
-								<SidebarMenuItem key={item.title}>
+								<SidebarMenuItem key={item.title} onClick={handleClick}>
 									<SidebarMenuButton asChild>
-										<a href={item.url}>
+										<Link href={item.url}>
 											<item.icon />
 											<span>{item.title}</span>
-										</a>
+										</Link>
 									</SidebarMenuButton>
 								</SidebarMenuItem>
 							))}
@@ -64,7 +53,16 @@ export function DashboardSidebar() {
 					</SidebarGroupContent>
 				</SidebarGroup>
 			</SidebarContent>
-			<SidebarFooter />
+			<SidebarFooter>
+				<MySidebarUser
+					profile={{
+						name: "Tom Pad",
+						email: "tom@tag.com",
+					}}
+					handleClose={handleClick}
+				/>
+			</SidebarFooter>
+			<SidebarRail />
 		</Sidebar>
 	);
 }
