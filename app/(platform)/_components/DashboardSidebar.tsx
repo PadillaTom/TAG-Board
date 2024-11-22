@@ -1,7 +1,6 @@
 "use client";
+
 import MySidebarUser from "@/components/MySidebarUser";
-import { SheetTitle } from "@/components/ui/sheet";
-import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import {
 	Sidebar,
 	SidebarContent,
@@ -15,17 +14,9 @@ import {
 	SidebarRail,
 	useSidebar,
 } from "@/components/ui/sidebar";
-import { Home } from "lucide-react";
-import Link from "next/link";
 
-// Menu items.
-const items = [
-	{
-		title: "Inicio",
-		url: "/dashboard",
-		icon: Home,
-	},
-];
+import { SIDEBAR_ROUTES } from "@/constants/appConstants";
+import Link from "next/link";
 
 export function DashboardSidebar() {
 	const { setOpenMobile } = useSidebar();
@@ -41,8 +32,8 @@ export function DashboardSidebar() {
 					<SidebarGroupLabel>Tableros</SidebarGroupLabel>
 					<SidebarGroupContent>
 						<SidebarMenu>
-							{items.map((item) => (
-								<SidebarMenuItem key={item.title} onClick={handleClick}>
+							{SIDEBAR_ROUTES.map((item) => (
+								<SidebarMenuItem onClick={handleClick} key={item.title}>
 									<SidebarMenuButton asChild>
 										<Link href={item.url}>
 											<item.icon />

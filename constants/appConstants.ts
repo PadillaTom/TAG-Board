@@ -1,4 +1,4 @@
-import { Settings, User } from "lucide-react";
+import { Home } from "lucide-react";
 
 export const JWT_COOKIE_NAME = "TAG_Board_JWT";
 
@@ -12,3 +12,11 @@ export const ROUTES = {
 	dashboard: "/dashboard",
 	profile: "/dashboard/profile",
 };
+
+export const SIDEBAR_ROUTES = [
+	{
+		title: "Inicio",
+		url: "/dashboard",
+		icon: Home,
+	},
+];

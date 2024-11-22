@@ -4,8 +4,6 @@ import "../paleta.css";
 import { Navbar } from "./_components/Navbar";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { DashboardSidebar } from "./_components/DashboardSidebar";
-import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
-import { SheetTitle } from "@/components/ui/sheet";
 
 const DashboardContentLayout = ({ children }: { children: React.ReactNode }) => {
 	return (
